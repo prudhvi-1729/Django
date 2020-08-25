@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand">Welcome</a>
+  <!--  <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    -->
+    <a href="/loginuser/" class="btn btn-danger">login</a>
+  </nav>
+{% for message in messages %}
+<p style="text-align: center;">{{message}}</p>
+{% endfor %}  
+<div class="container-fluid" style="position: relative;height: 650px;background-size: cover;background-image: url({%static "img/pizzaimg.jpg" %});">
+<div class="container" style="position: absolute;top: 50px;padding:20px;background-color: orangered;width:350px;height:280px;display:block;margin-right: 20px;right: 20px;">
+<h1 style="text-align: center;color: blanchedalmond;">sign in!</h1>    
+<form method="POST" action="/signupuser/">
+    {% csrf_token %}
+    <input class="form-control" style="margin-bottom: 10px;" placeholder="username" type="text" name="username">
+    <input class="form-control" style="margin-bottom: 10px;"  placeholder="password" type="password" name="password">
+    <input class="form-control" style="margin-bottom: 10px;" placeholder="phone number" type="number" name="phoneno">
+    <input type="submit" style="display:block;margin:auto"  class="btn btn-success" value="submit">
+</form>
+</div>
+</div>
+{% endblock %}
